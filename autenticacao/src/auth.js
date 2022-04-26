@@ -49,7 +49,6 @@ const UserCreated = () => {
 
 
 //create singIn
-
 const UserSingin = () => {
    const [state, setstate] = useState({
        error :'',
@@ -59,7 +58,7 @@ const UserSingin = () => {
    const SingInUser = (email, password) => {
        firebase
        .auth()
-       .signInWithEmailAndPassword()
+       .signInWithEmailAndPassword(email, password)
        .catch(err => {
            setstate({
                ...state ,
@@ -67,8 +66,24 @@ const UserSingin = () => {
            })
        })
    }
- 
-   
+   return [state , SingInUser ]
+}
 
+
+//create singout
+//always receive firebase
+const singout = () => {
+    firebase
+    .auth()
+    .signOut()
+    .then(() => {
+        console.log('sing out')
+    })
+}
+
+
+//theorical this gonna control all state aplications!!!
+
+export const AuthProvider  = () => {
 
 }
