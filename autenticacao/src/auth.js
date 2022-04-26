@@ -24,7 +24,6 @@ const UserCreated = () => {
       error:'',
       success: ''
   })
-
   const CreateUser = (email, password) => {
       firebase
       .auth()
@@ -84,6 +83,23 @@ const singout = () => {
 
 //theorical this gonna control all state aplications!!!
 
-export const AuthProvider  = () => {
-
+export const AuthProvider  = ({children}) => {
+  const users = UseGetUser()
+  const [CreateUserState, CreateUser] = UserCreated()
+  const [SinginUserState, SingInUser] = UserSingin()
+  return(
+     <AuthContext.Provider value={{
+         CreateUser:{
+             CreateUserState, CreateUser
+         },
+         SingInUser:{
+             SinginUserState, SingInUser
+         },
+          singout
+         }
+     }>
+      
+        {children}
+     </AuthContext.Provider>
+  )
 }
