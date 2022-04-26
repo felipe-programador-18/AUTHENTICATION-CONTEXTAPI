@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import  {useState, useContext} from 'react'
 import firebase from './firebase'
 import { AuthContext } from './auth'
 import { UsedatabasePush } from './database'
@@ -16,7 +16,23 @@ const NewComments = () => {
     const [altenativedisplay] = auth.users.email.split('@')
 
     const CreateComment = () => {
-        
-    }
+        if(comment !== ''){
+            save({
+                content: comment,
+                createAT: firebase.database.ServerValue.TIMESTAMP,
+                users:{
+                  id: auth.users.uid,
+                  name: displayNome || altenativedisplay
+                }
+            })
+            setcomments('')
+          }
+      }
+  return (<div>
+          <textarea value={comment}   onChange={ evt => setcomments(evt.target.value)}/> <br/>
+          <button onClick={CreateComment} ></button>
 
+         </div>)
 }
+
+export default NewComments
