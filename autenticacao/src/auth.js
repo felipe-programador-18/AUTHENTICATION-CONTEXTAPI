@@ -6,7 +6,6 @@ export const AuthContext = React.createContext()
 
 const UseGetUser = () => {
    const [users, setusers] = useState(null)
-
    useEffect(() => {
      firebase.auth().onAuthStateChanged(currentlyuser => {
          if(currentlyuser){
@@ -17,4 +16,59 @@ const UseGetUser = () => {
      })
    }, [])
    return users
+}
+
+//create access with authentication
+const UserCreated = () => {
+  const [state, setstate] = useState({
+      error:'',
+      success: ''
+  })
+
+  const CreateUser = (email, password) => {
+      firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(users => {
+          if(users){
+              setstate({
+              ...state ,
+              success:'ok'
+              })
+          }
+        })
+      .catch(err => {
+         setstate({
+             ...state,
+             error: err.message
+         })
+      })
+  } 
+    return [state, CreateUser]
+}
+
+
+//create singIn
+
+const UserSingin = () => {
+   const [state, setstate] = useState({
+       error :'',
+       success:''
+   })
+   
+   const SingInUser = (email, password) => {
+       firebase
+       .auth()
+       .signInWithEmailAndPassword()
+       .catch(err => {
+           setstate({
+               ...state ,
+               error : err.message 
+           })
+       })
+   }
+ 
+   
+
+
 }
