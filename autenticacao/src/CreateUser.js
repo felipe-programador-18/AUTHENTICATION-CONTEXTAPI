@@ -21,7 +21,7 @@ const CreateUser = () => {
       { auth.CreateUser.CreateUser.error !== '' && 
       <p> {auth.CreateUser.CreateUser.error} </p> 
       }
-    <input type='email' placeholder='E-mail' value={form.email} onChange={onChange('email')} />
+    <input type='text' placeholder='E-mail' value={form.email} onChange={onChange('email')} />
     
     <input type='password' placeholder='password' value={form.password} onChange={onChange('password')} />
 
