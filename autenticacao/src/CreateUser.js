@@ -12,7 +12,7 @@ const CreateUser = () => {
          [campo]: evt.target.value
      })
   }
-  if(auth.users === null){
+  if(auth.users !== null){
       return null
   }
 
