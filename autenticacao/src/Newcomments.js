@@ -5,14 +5,14 @@ import { UsedatabasePush } from './database'
 
 const NewComments = () => {
     //pull date to adding newcomments
-    const [, save] = UsedatabasePush()
+    const [, save] = UsedatabasePush('comments')
     const [comment, setcomments] = useState('')
     const auth = useContext(AuthContext)
     if(auth.users === null){
         return null
     }
     console.log(auth.users)
-    const {displayNome} = auth.users
+    const {displayName} = auth.users
     const [altenativedisplay] = auth.users.email.split('@')
 
     const CreateComment = () => {
@@ -22,7 +22,7 @@ const NewComments = () => {
                 createAT: firebase.database.ServerValue.TIMESTAMP,
                 users:{
                   id: auth.users.uid,
-                  name: displayNome || altenativedisplay
+                  name: displayName || altenativedisplay
                 }
             })
             setcomments('')
