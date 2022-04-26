@@ -1,6 +1,7 @@
 import React, {useContext}  from 'react'
 //import Time from './time'
-// import {AuthContext} from './auth'
+import { AuthContext } from './auth'
+
 
 
 //created comment to turn on with comments and time and auth // 
