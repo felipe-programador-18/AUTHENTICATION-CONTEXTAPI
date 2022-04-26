@@ -30,13 +30,13 @@ const UserInfo = () => {
   }  
 
   const {displayName} = auth.users
-  const [alternativeDisplayName] = auth.users.email.split('@')
-  const dn = displayName || alternativeDisplayName
+  const [altenativedisplay] = auth.users.email.split('@')
+  const dn = displayName || altenativedisplay
   
   return( <>
       <p> Hi there!! {dn} !  </p>
       <Formdisplay displayName={dn} users={auth.users} />
-      <button onClick={auth.signout}> Sair!</button>
+      <button onClick={auth.singout}> Sair!</button>
   </>
   )
 }
