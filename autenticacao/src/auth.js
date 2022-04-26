@@ -96,9 +96,7 @@ export const AuthProvider  = ({children}) => {
              SinginUserState, SingInUser
          },
           singout
-         }
-     }>
-      
+     }}>
         {children}
      </AuthContext.Provider>
   )
