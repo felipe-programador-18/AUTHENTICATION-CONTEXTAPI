@@ -1,4 +1,4 @@
-import React from 'react'
+
 const Time = ({TIMESTAMP}) => {
     const date = new Date(TIMESTAMP)
     const hours = date.getHours()
