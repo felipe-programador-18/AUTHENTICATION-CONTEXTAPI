@@ -1,5 +1,5 @@
 import React, {useContext}  from 'react'
-//import Time from './time'
+import Time from './Time'
 import { AuthContext } from './auth'
 
 
